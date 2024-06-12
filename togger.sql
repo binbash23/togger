@@ -1,5 +1,5 @@
 BEGIN TRANSACTION;
-drop table todo;
+drop table if exists todo;
 CREATE TABLE IF NOT EXISTS "todo" (
 	"description"	TEXT,
 	"status"	TEXT DEFAULT 'open',
