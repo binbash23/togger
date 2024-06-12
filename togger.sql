@@ -2,7 +2,7 @@ BEGIN TRANSACTION;
 drop table todo;
 CREATE TABLE IF NOT EXISTS "todo" (
 	"description"	TEXT,
-	"status"	TEXT DEFAULT 'offen',
+	"status"	TEXT DEFAULT 'open',
 	"create_date"	datetime NOT NULL DEFAULT (datetime(CURRENT_TIMESTAMP, 'localtime')),
 	"change_date"	datetime NOT NULL DEFAULT (datetime(CURRENT_TIMESTAMP, 'localtime')),
 	"id"	INTEGER,
