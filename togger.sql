@@ -14,4 +14,12 @@ AFTER UPDATE On todo
 BEGIN
    UPDATE todo SET change_date = (datetime(CURRENT_TIMESTAMP, 'localtime')) WHERE id = NEW.id;
 END;
+
+CREATE VIEW todo_closed as
+select * from todo
+WHERE
+status not in ('open', 'work', 'wait')
+order by 
+change_date desc
+
 COMMIT;
