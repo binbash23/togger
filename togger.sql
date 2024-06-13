@@ -1,5 +1,4 @@
 BEGIN TRANSACTION;
-drop table if exists todo;
 CREATE TABLE IF NOT EXISTS "todo" (
 	"description"	TEXT,
 	"status"	TEXT DEFAULT 'open',
@@ -8,18 +7,15 @@ CREATE TABLE IF NOT EXISTS "todo" (
 	"id"	INTEGER,
 	PRIMARY KEY("id")
 );
---INSERT INTO "todo" VALUES ('2024-06-11 23:44:21','2024-06-11 23:44:21',1,'test','offen');
 CREATE TRIGGER update_change_date_Trigger
 AFTER UPDATE On todo
 BEGIN
    UPDATE todo SET change_date = (datetime(CURRENT_TIMESTAMP, 'localtime')) WHERE id = NEW.id;
 END;
-
 CREATE VIEW todo_closed as
 select * from todo
 WHERE
 status not in ('open', 'work', 'wait')
 order by 
-change_date desc
-
+change_date desc;
 COMMIT;
