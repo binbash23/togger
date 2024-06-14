@@ -18,4 +18,22 @@ WHERE
 status not in ('open', 'work', 'wait')
 order by 
 change_date desc;
+CREATE VIEW todo_skipped as
+select * from todo
+WHERE
+status ='skipped'
+order by 
+change_date desc;
+CREATE VIEW todo_wait as
+select * from todo
+WHERE
+status ='wait'
+order by 
+change_date desc;
+CREATE VIEW todo_work as
+select * from todo
+WHERE
+status ='work'
+order by 
+change_date desc;
 COMMIT;
